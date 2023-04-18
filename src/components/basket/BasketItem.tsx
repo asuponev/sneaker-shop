@@ -7,7 +7,7 @@ import {
 
 import { useAppDispatch } from '@/hooks/hook'
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
-import { removeFromCart } from '@/store/cartSlice'
+import { removeFromCart, incOneItem, decOneItem } from '@/store/cartSlice'
 
 import styles from './Basket.module.scss'
 
@@ -30,11 +30,16 @@ const BasketItem: React.FC<ISneakerDataSingle> = ({
         </div>
         <div className={styles.basket__item_bottom}>
           <div className={styles.basket__item_counter}>
-            <button>
+            <button
+              disabled={sneaker.count === 1}
+              onClick={() => dispatch(decOneItem(sneaker))}
+            >
               <AiOutlineMinusCircle size={22} color='#000000' />
             </button>
-            <p>1</p>
-            <button>
+            <p>{sneaker.count}</p>
+            <button
+              onClick={() => dispatch(incOneItem(sneaker))}
+            >
               <AiOutlinePlusCircle size={22} color='#000000' />
             </button>
           </div>

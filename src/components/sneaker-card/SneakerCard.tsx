@@ -3,7 +3,7 @@ import { BsCart2 } from 'react-icons/bs'
 
 import { useAppDispatch, useAppSelector } from '@/hooks/hook'
 import { ISneaker, ISneakerDataSingle } from '@/interfaces/sneaker.interface'
-import { addToCart } from '@/store/cartSlice'
+import { addToCart, incOneItem } from '@/store/cartSlice'
 
 import styles from './SneakerCard.module.scss'
 
@@ -15,7 +15,7 @@ const SneakerCard: React.FC<ISneakerDataSingle> = ({
 
   const onAddToCart = (data: ISneaker) => {
     if (sneakers.some(item => item.id === sneaker.id)) {
-      console.log('+++')
+      dispatch(incOneItem(sneaker))
       return
     }
 

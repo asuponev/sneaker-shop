@@ -19,16 +19,28 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart(state, action: PayloadAction<ISneaker>) {
       state.sneakers.push(action.payload)
-      state.price = state.price + action.payload.price
+      state.price += action.payload.price
     },
     removeFromCart(state, action: PayloadAction<ISneaker>) {
-      state.sneakers = state.sneakers.filter(
-        (sneaker) => sneaker.id !== action.payload.id
+      state.sneakers = state.sneakers.filter((sneaker) =>
+        sneaker.id !== action.payload.id
       )
-      state.price = state.price - action.payload.price
+      state.price -= (action.payload.price * action.payload.count)
     },
+    incOneItem(state, action: PayloadAction<ISneaker>) {
+      state.sneakers.map((sneaker) =>
+        sneaker.id === action.payload.id ? sneaker.count++ : ''
+      )
+      state.price += action.payload.price
+    },
+    decOneItem(state, action: PayloadAction<ISneaker>) {
+      state.sneakers.map((sneaker) =>
+        sneaker.id === action.payload.id ? sneaker.count-- : ''
+      )
+      state.price -= action.payload.price
+    }
   },
 })
 
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, incOneItem, decOneItem } = cartSlice.actions
 export default cartSlice.reducer

@@ -3,6 +3,7 @@ export interface ISneaker {
   title: string
   image: string
   price: number
+  count: number
 }
 
 export interface ISneakerData {
