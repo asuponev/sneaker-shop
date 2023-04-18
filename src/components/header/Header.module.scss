@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1640px;
+  padding: 19px 30px;
+  border-bottom: 1px solid #CFCFCF;
+
+  &__logo {
+    font-size: 18px;
+
+    span {
+      font-size: 36px;
+      font-weight: 700;
+    }
+  }
+
+  &__cart {
+    position: relative;
+    margin-top: 8px;
+    margin-right: 6px;
+
+    &_count {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background-color: #3366FF;
+      top: -3px;
+      right: -6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        font-size: 10px;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
