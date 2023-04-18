@@ -1,8 +1,16 @@
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 
-import Header from '@/components/header/Header'
+import { SneakerService } from '@/services/sneaker.service'
+import { ISneakerData } from '@/components/interfaces/sneaker.interface'
 
-export default function Home() {
+import Header from '@/components/header/Header'
+import SneakerCards from '@/components/sneaker-cards/SneakerCards'
+
+const Home: NextPage<ISneakerData> = ({
+  sneakers
+}) => {
+  console.log(sneakers)
   return (
     <>
       <Head>
@@ -13,8 +21,18 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        Hello
+        <SneakerCards sneakers={sneakers}/>
       </main>
     </>
   )
 }
+
+export const getServerSideProps: GetServerSideProps<ISneakerData> = async () => {
+  const sneakers = await SneakerService.getAll()
+
+  return {
+    props: { sneakers }
+  }
+}
+
+export default Home
