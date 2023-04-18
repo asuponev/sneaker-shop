@@ -12,9 +12,7 @@ export const SneakerService = {
   },
 
   async getById(id: string) {
-    const { data } = await axios.get<ISneaker[]>('/api/sneakers', {
-      params: { id }
-    })
-    return data[0]
+    const { data } = await axios.get<ISneaker>(`/api/sneakers/${id}`)
+    return data
   },
 }
