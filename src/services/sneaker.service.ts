@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { ISneaker } from '@/components/interfaces/sneaker.interface'
+import { ISneaker } from '@/interfaces/sneaker.interface'
 
 const API_URL = process.env.API_URL
 axios.defaults.baseURL = API_URL

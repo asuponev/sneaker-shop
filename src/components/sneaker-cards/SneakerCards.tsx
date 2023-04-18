@@ -1,4 +1,4 @@
-import { ISneakerData } from '../interfaces/sneaker.interface'
+import { ISneakerData } from '@/interfaces/sneaker.interface'
 
 import Container from '../container/Container'
 import SneakerCard from '../sneaker-card/SneakerCard'

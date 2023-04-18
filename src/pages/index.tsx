@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 
 import { SneakerService } from '@/services/sneaker.service'
-import { ISneakerData } from '@/components/interfaces/sneaker.interface'
+import { ISneakerData } from '@/interfaces/sneaker.interface'
 
 import Header from '@/components/header/Header'
 import SneakerCards from '@/components/sneaker-cards/SneakerCards'
@@ -10,7 +10,6 @@ import SneakerCards from '@/components/sneaker-cards/SneakerCards'
 const Home: NextPage<ISneakerData> = ({
   sneakers
 }) => {
-  console.log(sneakers)
   return (
     <>
       <Head>
