@@ -5,7 +5,7 @@ import { SneakerService } from '@/services/sneaker.service'
 import { ISneakerData } from '@/interfaces/sneaker.interface'
 
 import Header from '@/components/header/Header'
-import SneakerCards from '@/components/sneaker-cards/SneakerCards'
+import MainScreen from '@/components/screens/main/MainScreen'
 
 const Home: NextPage<ISneakerData> = ({
   sneakers
@@ -20,7 +20,7 @@ const Home: NextPage<ISneakerData> = ({
       </Head>
       <Header />
       <main>
-        <SneakerCards sneakers={sneakers}/>
+        <MainScreen sneakers={sneakers} />
       </main>
     </>
   )
