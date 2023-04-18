@@ -5,20 +5,26 @@ import {
   AiOutlineClose
 } from 'react-icons/ai'
 
+import { useAppDispatch } from '@/hooks/hook'
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
+import { removeFromCart } from '@/store/cartSlice'
 
 import styles from './Basket.module.scss'
 
 const BasketItem: React.FC<ISneakerDataSingle> = ({
   sneaker
 }) => {
+  const dispatch = useAppDispatch()
+
   return (
     <div className={styles.basket__item}>
       <Image src={sneaker.image} alt={sneaker.title} width={90} height={51} />
       <div>
         <div className={styles.basket__item_top}>
           <p>{sneaker.title}</p>
-          <button>
+          <button
+            onClick={() => dispatch(removeFromCart(sneaker))}
+          >
             <AiOutlineClose size={26} color='#CFCFCF' />
           </button>
         </div>

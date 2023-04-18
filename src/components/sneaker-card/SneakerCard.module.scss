@@ -12,21 +12,26 @@
   &__title {
     width: 165px;
     font-weight: 700;
+    margin-top: 25px;
+    padding: 0 4px;
   }
 
   &__action {
     display: flex;
     align-items: center;
     gap: 15px;
+    padding: 0 4px;
 
     &_cart {
       width: 40px;
       height: 40px;
       background-color: #3366FF;
       border-radius: 3px;
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
   }
 }

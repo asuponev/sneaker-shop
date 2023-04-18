@@ -11,7 +11,7 @@ const MainScreen: React.FC<ISneakerData> = ({
   return (
     <div className={styles.main}>
       <SneakerCards sneakers={sneakers} />
-      <Basket sneakers={sneakers} />
+      <Basket />
     </div>
   )
 }

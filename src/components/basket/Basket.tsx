@@ -1,18 +1,19 @@
-import { ISneakerData } from '@/interfaces/sneaker.interface'
+import { useAppDispatch, useAppSelector } from '@/hooks/hook'
 
 import styles from './Basket.module.scss'
 import BasketItem from './BasketItem'
 
-const Basket: React.FC<ISneakerData> = ({
-  sneakers
-}) => {
+const Basket = () => {
+  const dispatch = useAppDispatch()
+  const { sneakers} = useAppSelector(state => state.cart)
+
   return (
     <div className={styles.basket}>
       <p className={styles.basket__title}>My basket</p>
       <div className={styles.basket__list}>
         {sneakers.length ?
           sneakers.map((sneaker) => <BasketItem key={sneaker.id} sneaker={sneaker} />)
-          : <div>Sneakers is empty</div>}
+          : <div>Basket is empty</div>}
       </div>
       <div className={styles.basket__price}>
         <div className={styles.basket__price_line}>
