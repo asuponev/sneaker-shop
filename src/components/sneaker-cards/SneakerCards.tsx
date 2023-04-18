@@ -1,7 +1,7 @@
 import { ISneakerData } from '@/interfaces/sneaker.interface'
 
-import Container from '../container/Container'
-import SneakerCard from '../sneaker-card/SneakerCard'
+import Container from '@/components/container/Container'
+import SneakerCard from '@/components/sneaker-card/SneakerCard'
 
 import styles from './SneakerCards.module.scss'
 
