@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import { ISneaker, ISneakerData } from '@/interfaces/sneaker.interface'
+import { ISneaker } from '@/interfaces/sneaker.interface'
 
-const initialState: ISneakerData = {
+type cartState = {
+  sneakers: ISneaker[]
+  price: number
+}
+
+const initialState: cartState = {
   sneakers: [],
+  price: 0
 }
 
 export const cartSlice = createSlice({
@@ -13,11 +19,13 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart(state, action: PayloadAction<ISneaker>) {
       state.sneakers.push(action.payload)
+      state.price = state.price + action.payload.price
     },
     removeFromCart(state, action: PayloadAction<ISneaker>) {
       state.sneakers = state.sneakers.filter(
         (sneaker) => sneaker.id !== action.payload.id
       )
+      state.price = state.price - action.payload.price
     },
   },
 })
