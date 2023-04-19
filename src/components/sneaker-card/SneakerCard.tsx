@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
+import { formatPrice } from '@/services/formatPrice'
 
 import ButtonCart from '../buttons/cart/ButtonCart'
 import styles from './SneakerCard.module.scss'
@@ -22,7 +23,7 @@ const SneakerCard: React.FC<ISneakerDataSingle> = ({
       </div>
       <div className={styles.card__action}>
         <ButtonCart sneaker={sneaker} />
-        <p>$ {sneaker.price}</p>
+        <p>$ {formatPrice(sneaker.price)}</p>
       </div>
     </div>
   )

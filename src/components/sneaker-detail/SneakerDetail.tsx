@@ -2,10 +2,10 @@ import Image from 'next/legacy/image'
 import { useRouter } from 'next/navigation'
 
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
+import { formatPrice } from '@/services/formatPrice'
 
 import Container from '@/components/container/Container'
-
-import ButtonCart from '../buttons/cart/ButtonCart'
+import ButtonCart from '@/components/buttons/cart/ButtonCart'
 import styles from './SneakerDetail.module.scss'
 
 const SneakerDetail: React.FC<ISneakerDataSingle> = ({
@@ -36,7 +36,7 @@ const SneakerDetail: React.FC<ISneakerDataSingle> = ({
         </div>
         <div className={styles.product__action}>
           <ButtonCart sneaker={sneaker} />
-          <p>$ {sneaker.price}</p>
+          <p>$ {formatPrice(sneaker.price)}</p>
         </div>
       </div>
     </Container>

@@ -2,6 +2,7 @@ import { TfiClose } from 'react-icons/tfi'
 
 import { useAppSelector, useAppDispatch } from '@/hooks/hook'
 import { toggleOpenCart } from '@/store/cartSlice'
+import { formatPrice } from '@/services/formatPrice'
 
 import BasketItem from './BasketItem'
 import styles from './Basket.module.scss'
@@ -28,7 +29,7 @@ const Basket = () => {
       <div className={styles.basket__price}>
         <div className={styles.basket__price_line}>
           <p>Subtotal</p>
-          <p>$ {price}</p>
+          <p>$ {formatPrice(price)}</p>
         </div>
         <div className={styles.basket__price_line}>
           <p>Tax</p>
@@ -40,7 +41,7 @@ const Basket = () => {
         </div>
         <div className={styles.basket__price_line}>
           <p>Total</p>
-          <p>$ {price ? price + 100 + 150 : 0}</p>
+          <p>$ {price ? formatPrice(price + 100 + 150) : 0}</p>
         </div>
       </div>
     </div>
