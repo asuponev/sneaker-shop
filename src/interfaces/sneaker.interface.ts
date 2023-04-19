@@ -1,6 +1,7 @@
 export interface ISneaker {
   id: number
   title: string
+  model: string
   image: string
   price: number
   selectedItemsCount: number
