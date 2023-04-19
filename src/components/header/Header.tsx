@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { BsCart2 } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
 
@@ -8,18 +8,26 @@ import { toggleOpenCart } from '@/store/cartSlice'
 import styles from './Header.module.scss'
 
 const Header: React.FC = () => {
+  const router = useRouter()
   const { sneakers } = useAppSelector(state => state.cart)
   const dispatch = useAppDispatch()
 
   const selectedItemsCount = sneakers.reduce((acc, cur) => acc + cur.selectedItemsCount, 0)
 
+  const onClickLogo = () => {
+    if (router.pathname !== '/') {
+      return router.push('/')
+    }
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <div className={styles.header__logo}>
-          <Link href='/'>
-            <span>SP</span>.shop
-          </Link>
+        <div
+          className={styles.header__logo}
+          onClick={onClickLogo}
+        >
+          <span>SP</span>.shop
         </div>
         <div className={styles.header__icons}>
           <div
