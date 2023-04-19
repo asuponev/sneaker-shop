@@ -1,27 +1,20 @@
 import Image from 'next/legacy/image'
-import { useRouter } from 'next/navigation'
 
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
 import { formatPrice } from '@/services/formatPrice'
 
 import Container from '@/components/container/Container'
 import ButtonCart from '@/components/buttons/cart/ButtonCart'
+import ButtonBack from '../buttons/back/ButtonBack'
 import styles from './SneakerDetail.module.scss'
 
 const SneakerDetail: React.FC<ISneakerDataSingle> = ({
   sneaker
 }) => {
-  const router = useRouter()
-
   return (
     <Container>
       <div className={styles.product}>
-        <button
-          onClick={() => router.push('/')}
-          className={styles.product__backbtn}
-        >
-          Back in catalog
-        </button>
+        <ButtonBack />
         <Image
           src={sneaker.image}
           alt={sneaker.title}
