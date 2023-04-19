@@ -1,29 +1,17 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { BsCart2 } from 'react-icons/bs'
 
-import { useAppDispatch, useAppSelector } from '@/hooks/hook'
-import { ISneaker, ISneakerDataSingle } from '@/interfaces/sneaker.interface'
-import { addToCart, incOneItem } from '@/store/cartSlice'
+import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
+import useCart from '@/hooks/useCart'
 
-import styles from './SneakerCard.module.scss'
 import ButtonCart from '../buttons/cart/ButtonCart'
+import styles from './SneakerCard.module.scss'
 
 const SneakerCard: React.FC<ISneakerDataSingle> = ({
   sneaker
 }) => {
   const router = useRouter()
-  const dispatch = useAppDispatch()
-  const { sneakers } = useAppSelector(state => state.cart)
-
-  const onAddToCart = (sneaker: ISneaker) => {
-    if (sneakers.some(item => item.id === sneaker.id)) {
-      dispatch(incOneItem(sneaker))
-      return
-    }
-
-    dispatch(addToCart(sneaker))
-  }
+  const { onAddToCart } = useCart()
 
   return (
     <div className={styles.card}>
