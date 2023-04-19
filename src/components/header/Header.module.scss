@@ -1,10 +1,21 @@
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1640px;
-  padding: 19px 30px;
   border-bottom: 1px solid #CFCFCF;
+  position: fixed;
+  width: 100%;
+  background-color: #FFFFFF;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1640px;
+    padding: 19px 30px;
+    margin: 0 auto;
+
+    @media (max-width: 410px) {
+      padding: 19px 30px 19px 20px;
+    }
+  }
 
   &__logo {
     font-size: 18px;

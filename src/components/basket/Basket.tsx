@@ -1,18 +1,29 @@
-import { useAppSelector } from '@/hooks/hook'
+import { TfiClose } from 'react-icons/tfi'
 
-import styles from './Basket.module.scss'
+import { useAppSelector, useAppDispatch } from '@/hooks/hook'
+import { toggleOpenCart } from '@/store/cartSlice'
+
 import BasketItem from './BasketItem'
+import styles from './Basket.module.scss'
 
 const Basket = () => {
-  const { sneakers, price } = useAppSelector(state => state.cart)
+  const { sneakers, price, isOpen } = useAppSelector(state => state.cart)
+  const dispatch = useAppDispatch()
 
   return (
-    <div className={styles.basket}>
-      <p className={styles.basket__title}>My basket</p>
-      <div className={styles.basket__list}>
-        {sneakers.length ?
-          sneakers.map((sneaker) => <BasketItem key={sneaker.id} sneaker={sneaker} />)
-          : <div>Basket is empty</div>}
+    <div className={isOpen ? `${styles.basket} ${styles.open}` : styles.basket}>
+      <div className={styles.basket__close}>
+        <button onClick={() => dispatch(toggleOpenCart())}>
+          <TfiClose size={25} color='#000000' />
+        </button>
+      </div>
+      <div className={styles.basket__container}>
+        <p className={styles.basket__title}>My basket</p>
+        <div className={styles.basket__list}>
+          {sneakers.length ?
+            sneakers.map((sneaker) => <BasketItem key={sneaker.id} sneaker={sneaker} />)
+            : <p>Basket is empty</p>}
+        </div>
       </div>
       <div className={styles.basket__price}>
         <div className={styles.basket__price_line}>

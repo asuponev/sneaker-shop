@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useRouter } from 'next/navigation'
 
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
@@ -28,6 +28,7 @@ const SneakerDetail: React.FC<ISneakerDataSingle> = ({
           width={890}
           height={508}
           className={styles.product__image}
+          layout='responsive'
         />
         <div className={styles.product__info}>
           <p className={styles.product__info_title}>{sneaker.title}</p>

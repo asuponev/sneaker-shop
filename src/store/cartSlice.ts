@@ -6,11 +6,13 @@ import { ISneaker } from '@/interfaces/sneaker.interface'
 type cartState = {
   sneakers: ISneaker[]
   price: number
+  isOpen: boolean
 }
 
 const initialState: cartState = {
   sneakers: [],
-  price: 0
+  price: 0,
+  isOpen: false
 }
 
 export const cartSlice = createSlice({
@@ -38,9 +40,18 @@ export const cartSlice = createSlice({
         sneaker.id === action.payload.id ? sneaker.selectedItemsCount-- : ''
       )
       state.price -= action.payload.price
+    },
+    toggleOpenCart(state) {
+      state.isOpen = !state.isOpen
     }
   },
 })
 
-export const { addToCart, removeFromCart, incOneItem, decOneItem } = cartSlice.actions
+export const { 
+  addToCart, 
+  removeFromCart, 
+  incOneItem, 
+  decOneItem,
+  toggleOpenCart
+} = cartSlice.actions
 export default cartSlice.reducer

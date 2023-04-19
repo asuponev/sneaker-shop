@@ -1,9 +1,6 @@
 import Image from 'next/image'
-import {
-  AiOutlineMinusCircle,
-  AiOutlinePlusCircle,
-  AiOutlineClose
-} from 'react-icons/ai'
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai'
+import { TfiClose } from 'react-icons/tfi'
 
 import useCart from '@/hooks/useCart'
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
@@ -37,9 +34,9 @@ const BasketItem: React.FC<ISneakerDataSingle> = ({
           <p>$ {sneaker.price}</p>
         </div>
       </div>
-      <div className={styles.basket__item_close}>
+      <div className={styles.basket__item_remove}>
         <button onClick={() => onRemoveFromCard(sneaker)}>
-          <AiOutlineClose size={26} color='#CFCFCF' />
+          <TfiClose size={22} color='#CFCFCF' />
         </button>
       </div>
     </div>
