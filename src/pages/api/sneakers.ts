@@ -1,12 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { ISneaker } from '@/interfaces/sneaker.interface'
-
-import data from './data'
-
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ISneaker[]>
+  res: NextApiResponse
 ) {
-  res.status(200).json(data)
+  res.status(200).json({
+    hello: 'Here should be a query to the database, but in this project the request for mock data is made from the server component using json-server deployed in another repository'
+  })
 }

@@ -7,12 +7,12 @@ axios.defaults.baseURL = API_URL
 
 export const SneakerService = {
   async getAll() {
-    const { data } = await axios.get<ISneaker[]>('/api/sneakers')
+    const { data } = await axios.get<ISneaker[]>('/sneakers')
     return data
   },
 
   async getById(id: string) {
-    const { data } = await axios.get<ISneaker>(`/api/sneakers/${id}`)
+    const { data } = await axios.get<ISneaker>(`/sneakers/${id}`)
     return data
   },
 }
