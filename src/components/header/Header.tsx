@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { BsCart2 } from 'react-icons/bs'
+import { RxHamburgerMenu } from 'react-icons/rx'
 
 import { useAppSelector, useAppDispatch } from '@/hooks/hook'
 import { toggleOpenCart } from '@/store/cartSlice'
@@ -20,13 +21,21 @@ const Header: React.FC = () => {
             <span>SP</span>.shop
           </Link>
         </div>
-        <div
-          onClick={() => dispatch(toggleOpenCart())}
-          className={styles.header__cart}
-        >
-          <BsCart2 size={24} />
-          <div className={styles.header__cart_count}>
-            <span>{selectedItemsCount}</span>
+        <div className={styles.header__icons}>
+          <div
+            onClick={() => dispatch(toggleOpenCart())}
+            className={styles.header__cart}
+          >
+            <BsCart2 size={24} />
+            <div className={styles.header__cart_count}>
+              <span>{selectedItemsCount}</span>
+            </div>
+          </div>
+          <div
+            onClick={() => dispatch(toggleOpenCart())}
+            className={styles.header__burger}
+          >
+            <RxHamburgerMenu size={34} />
           </div>
         </div>
       </div>
