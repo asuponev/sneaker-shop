@@ -5,46 +5,42 @@ import {
   AiOutlineClose
 } from 'react-icons/ai'
 
-import { useAppDispatch } from '@/hooks/hook'
+import useCart from '@/hooks/useCart'
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
-import { removeFromCart, incOneItem, decOneItem } from '@/store/cartSlice'
 
 import styles from './Basket.module.scss'
 
 const BasketItem: React.FC<ISneakerDataSingle> = ({
   sneaker
 }) => {
-  const dispatch = useAppDispatch()
+  const {
+    onDecOneItemFromCart,
+    onIncOneItemInCard,
+    onRemoveFromCard
+  } = useCart()
 
   return (
     <div className={styles.basket__item}>
-      <Image src={sneaker.image} alt={sneaker.title} width={90} height={51} />
-      <div>
-        <div className={styles.basket__item_top}>
-          <p>{sneaker.title}</p>
-          <button
-            onClick={() => dispatch(removeFromCart(sneaker))}
-          >
-            <AiOutlineClose size={26} color='#CFCFCF' />
+      <div className={styles.basket__item_image}>
+        <Image src={sneaker.image} alt={sneaker.title} width={90} height={51} />
+      </div>
+      <div className={styles.basket__item_content}>
+        <p className={styles.basket__item_title}>{sneaker.title}</p>
+        <div className={styles.basket__item_counter}>
+          <button onClick={() => onDecOneItemFromCart(sneaker)}>
+            <AiOutlineMinusCircle size={22} color='#000000' />
           </button>
-        </div>
-        <div className={styles.basket__item_bottom}>
-          <div className={styles.basket__item_counter}>
-            <button
-              disabled={sneaker.selectedItemsCount === 1}
-              onClick={() => dispatch(decOneItem(sneaker))}
-            >
-              <AiOutlineMinusCircle size={22} color='#000000' />
-            </button>
-            <p>{sneaker.selectedItemsCount}</p>
-            <button
-              onClick={() => dispatch(incOneItem(sneaker))}
-            >
-              <AiOutlinePlusCircle size={22} color='#000000' />
-            </button>
-          </div>
+          <span>{sneaker.selectedItemsCount}</span>
+          <button onClick={() => onIncOneItemInCard(sneaker)}>
+            <AiOutlinePlusCircle size={22} color='#000000' />
+          </button>
           <p>$ {sneaker.price}</p>
         </div>
+      </div>
+      <div className={styles.basket__item_close}>
+        <button onClick={() => onRemoveFromCard(sneaker)}>
+          <AiOutlineClose size={26} color='#CFCFCF' />
+        </button>
       </div>
     </div>
   )

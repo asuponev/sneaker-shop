@@ -1,6 +1,6 @@
 import { ISneaker } from '@/interfaces/sneaker.interface'
-import { useAppDispatch, useAppSelector } from './hook'
-import { addToCart, incOneItem } from '@/store/cartSlice'
+import { useAppDispatch, useAppSelector } from '@/hooks/hook'
+import { addToCart, removeFromCart, incOneItem, decOneItem } from '@/store/cartSlice'
 
 const useCart = () => {
 
@@ -16,8 +16,28 @@ const useCart = () => {
     dispatch(addToCart(sneaker))
   }
 
+  const onDecOneItemFromCart = (sneaker: ISneaker) => {
+    if (sneaker.selectedItemsCount === 1) {
+      dispatch(removeFromCart(sneaker))
+      return
+    }
+    
+    dispatch(decOneItem(sneaker))
+  }
+
+  const onIncOneItemInCard = (sneaker: ISneaker) => {
+    dispatch(incOneItem(sneaker))
+  }
+
+  const onRemoveFromCard = (sneaker: ISneaker) => {
+    dispatch(removeFromCart(sneaker))
+  }
+
   return {
-    onAddToCart
+    onAddToCart,
+    onDecOneItemFromCart,
+    onIncOneItemInCard,
+    onRemoveFromCard
   }
 }
 
