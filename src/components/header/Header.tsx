@@ -8,7 +8,7 @@ import styles from './Header.module.scss'
 const Header: React.FC = () => {
   const { sneakers } = useAppSelector(state => state.cart)
 
-  const count = sneakers.reduce((acc, cur) => acc + cur.count, 0)
+  const selectedItemsCount = sneakers.reduce((acc, cur) => acc + cur.selectedItemsCount, 0)
 
   return (
     <header className={styles.header}>
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
       <div className={styles.header__cart}>
         <BsCart2 size={24} />
         <div className={styles.header__cart_count}>
-          <span>{count}</span>
+          <span>{selectedItemsCount}</span>
         </div>
       </div>
     </header>

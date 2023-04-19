@@ -31,12 +31,12 @@ const BasketItem: React.FC<ISneakerDataSingle> = ({
         <div className={styles.basket__item_bottom}>
           <div className={styles.basket__item_counter}>
             <button
-              disabled={sneaker.count === 1}
+              disabled={sneaker.selectedItemsCount === 1}
               onClick={() => dispatch(decOneItem(sneaker))}
             >
               <AiOutlineMinusCircle size={22} color='#000000' />
             </button>
-            <p>{sneaker.count}</p>
+            <p>{sneaker.selectedItemsCount}</p>
             <button
               onClick={() => dispatch(incOneItem(sneaker))}
             >

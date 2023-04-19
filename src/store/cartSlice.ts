@@ -25,17 +25,17 @@ export const cartSlice = createSlice({
       state.sneakers = state.sneakers.filter((sneaker) =>
         sneaker.id !== action.payload.id
       )
-      state.price -= (action.payload.price * action.payload.count)
+      state.price -= (action.payload.price * action.payload.selectedItemsCount)
     },
     incOneItem(state, action: PayloadAction<ISneaker>) {
       state.sneakers.map((sneaker) =>
-        sneaker.id === action.payload.id ? sneaker.count++ : ''
+        sneaker.id === action.payload.id ? sneaker.selectedItemsCount++ : ''
       )
       state.price += action.payload.price
     },
     decOneItem(state, action: PayloadAction<ISneaker>) {
       state.sneakers.map((sneaker) =>
-        sneaker.id === action.payload.id ? sneaker.count-- : ''
+        sneaker.id === action.payload.id ? sneaker.selectedItemsCount-- : ''
       )
       state.price -= action.payload.price
     }
