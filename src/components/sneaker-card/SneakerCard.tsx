@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import { ISneakerDataSingle } from '@/interfaces/sneaker.interface'
-import useCart from '@/hooks/useCart'
 
 import ButtonCart from '../buttons/cart/ButtonCart'
 import styles from './SneakerCard.module.scss'
@@ -11,7 +10,6 @@ const SneakerCard: React.FC<ISneakerDataSingle> = ({
   sneaker
 }) => {
   const router = useRouter()
-  const { onAddToCart } = useCart()
 
   return (
     <div className={styles.card}>
@@ -23,7 +21,7 @@ const SneakerCard: React.FC<ISneakerDataSingle> = ({
         <p className={styles.card__title}>{sneaker.title}</p>
       </div>
       <div className={styles.card__action}>
-        <ButtonCart onClick={() => onAddToCart(sneaker)} />
+        <ButtonCart sneaker={sneaker} />
         <p>$ {sneaker.price}</p>
       </div>
     </div>
