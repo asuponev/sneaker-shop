@@ -7,6 +7,7 @@ import { ISneaker, ISneakerDataSingle } from '@/interfaces/sneaker.interface'
 import { addToCart, incOneItem } from '@/store/cartSlice'
 
 import styles from './SneakerCard.module.scss'
+import ButtonCart from '../buttons/cart/ButtonCart'
 
 const SneakerCard: React.FC<ISneakerDataSingle> = ({
   sneaker
@@ -34,12 +35,7 @@ const SneakerCard: React.FC<ISneakerDataSingle> = ({
         <p className={styles.card__title}>{sneaker.title}</p>
       </div>
       <div className={styles.card__action}>
-        <button
-          className={styles.card__action_cart}
-          onClick={() => onAddToCart(sneaker)}
-        >
-          <BsCart2 size={24} color='#FFFFFF' />
-        </button>
+        <ButtonCart onClick={() => onAddToCart(sneaker)} />
         <p>$ {sneaker.price}</p>
       </div>
     </div>

@@ -1,0 +1,16 @@
+.buttonCart {
+  width: 40px;
+  height: 40px;
+  background-color: #3366FF;
+  border-radius: 3px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.5s;
+
+  &:hover {
+    background-color: #4c79ff;
+  }
+}
