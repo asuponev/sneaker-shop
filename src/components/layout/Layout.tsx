@@ -10,7 +10,7 @@ interface ILayoutProps {
 
 const Layout: React.FC<PropsWithChildren<ILayoutProps>> = ({
   children,
-  title = 'SB.shop',
+  title = 'SP.shop',
   description = 'Sneaker Shop'
 }) => {
   return (

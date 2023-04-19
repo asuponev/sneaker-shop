@@ -11,9 +11,8 @@ import Basket from '@/components/basket/Basket'
 const SneakerPage: NextPage<ISneakerDataSingle> = ({
   sneaker
 }) => {
-
   return (
-    <Layout>
+    <Layout title={sneaker.title}>
       <div className='screen'>
         <SneakerDetail sneaker={sneaker} />
         <Basket />
