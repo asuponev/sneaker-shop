@@ -36,7 +36,7 @@ const useCart = () => {
 
   const onRemoveFromCard = (sneaker: ISneaker) => {
     dispatch(removeFromCart(sneaker))
-    toast.success('Remove from cart')
+    toast.success('Removed from cart')
   }
 
   return {
